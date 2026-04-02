@@ -27,10 +27,16 @@ function check_file_extension {
     [[ "${file_extension}" != "sh" ]] && filename="${new_file}"
 }
 
+function check_file_exists {
+    filename="${1}"
+    [[ -e "${filename}" ]] && filename="${filename%.*}_$(date +'%H%M%S').sh"
+}
+
 # function to create a generic bash script
 function create_generic_script {
   local filename="$1"
   check_file_extension "${filename}"
+  check_file_exists "${filename}"
   echo "#!/usr/bin/env bash" > "${filename}"
   echo "" >> "${filename}"
   echo "# Author: omitida" >> "${filename}"
