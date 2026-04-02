@@ -47,7 +47,7 @@ if [[ "$#" -ne 2 ]]; then
 fi
 
 # options string
-options="d:g:h"
+options="d:g:r:h"
 
 # Parse options
 while getopts "${options}" opt; do
@@ -64,6 +64,11 @@ while getopts "${options}" opt; do
       help
       exit 0
       ;;
+    r)
+        echo "Running bash script: ${OPTARG}"
+        chmod +x "${OPTARG}"
+        ./${OPTARG}
+        ;;
     \?)
       echo "Invalid option: -${OPTARG}" >&2
       help
