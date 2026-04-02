@@ -13,6 +13,10 @@ function help {
   echo "Options Avaliable:"
   echo "-d:	Delete a bash file."
   echo "-g:	Create a generic bash script."
+  echo "-r:	Run a bash script."
+  echo "-h:	Display this help message."
+
+  exit 0
 }
 
 # global variables
@@ -65,7 +69,6 @@ while getopts "${options}" opt; do
       ;;
     h)
       help
-      exit 0
       ;;
     r)
         echo "Running bash script: ${OPTARG}"
@@ -75,12 +78,10 @@ while getopts "${options}" opt; do
     \?)
       echo "Invalid option: -${OPTARG}" >&2
       help
-      exit 1
       ;;
     *)
       echo "Unknown option: -${OPTARG}" >&2
       help
-      exit 1
       ;;
   esac
 done
