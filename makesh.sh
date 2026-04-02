@@ -41,10 +41,7 @@ function create_generic_script {
 }
 
 
-if [[ "$#" -ne 2 ]]; then
-  help
-  exit 1
-fi
+[[ "$#" -ne 2 ]] && { help ; exit 1; }
 
 # options string
 options="d:g:r:h"
