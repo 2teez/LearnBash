@@ -12,3 +12,14 @@ for num in {1..100}; do
     fi
 done
 echo ""
+
+for lang in c++ python java bash elixir; do
+    printf "Language: ${lang}\n"
+done
+echo ""
+
+for file in forloop*?; do
+    printf "File: ${file}\n"
+    cat "${file}"
+    echo ""
+done
